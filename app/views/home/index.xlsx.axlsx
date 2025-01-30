@@ -1,0 +1,25 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Registros") do |sheet|
+  # Título
+  sheet.add_row ["Registro de asistencia del día #{@selected_date.strftime("%d/%m/%Y")}"], style: sheet.styles.add_style(b: true, sz: 14)
+  sheet.add_row [] # Fila vacía para espaciado
+
+  # Encabezados
+  headers = ["Nombre", "Hora de Entrada", "Hora de Salida", "Jornada", "Notas"]
+  sheet.add_row headers, style: sheet.styles.add_style(b: true, bg_color: "CCCCCC")
+
+  # Datos
+  @time_records.each do |record|
+    sheet.add_row [
+      record.user.name,
+      record.clock_in&.strftime("%I:%M %p"),
+      record.clock_out&.strftime("%I:%M %p") || "-",
+      record.clock_out ? "Finalizada" : "En curso",
+      record.notes
+    ]
+  end
+
+  # Ajustar el ancho de las columnas
+  sheet.column_widths 20, 15, 15, 15, 30
+end 
