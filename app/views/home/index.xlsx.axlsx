@@ -6,7 +6,7 @@ wb.add_worksheet(name: "Registros") do |sheet|
   sheet.add_row [] # Fila vacía para espaciado
 
   # Encabezados
-  headers = ["Nombre", "Hora de Entrada", "Hora de Salida", "Jornada", "Notas"]
+  headers = ["Nombre", "Hora de Entrada", "Hora de Salida", "Horas Trabajadas", "Notas"]
   sheet.add_row headers, style: sheet.styles.add_style(b: true, bg_color: "CCCCCC")
 
   # Datos
@@ -15,7 +15,7 @@ wb.add_worksheet(name: "Registros") do |sheet|
       record.user.name,
       record.clock_in&.strftime("%I:%M %p"),
       record.clock_out&.strftime("%I:%M %p") || "-",
-      record.clock_out ? "Finalizada" : "En curso",
+      record.worked_hours,
       record.notes
     ]
   end
