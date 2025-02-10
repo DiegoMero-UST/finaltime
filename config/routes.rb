@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post 'clock_in', to: 'home#clock_in'
   post 'clock_out', to: 'home#clock_out'
   delete 'time_records/:id', to: 'home#destroy', as: 'time_record'
+  patch 'time_records/:id/update_notes', to: 'home#update_notes', as: 'update_notes_time_record'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

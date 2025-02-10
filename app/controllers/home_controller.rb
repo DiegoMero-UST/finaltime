@@ -24,8 +24,7 @@ class HomeController < ApplicationController
       TimeRecord.create!(
         user: user,
         date: Date.current,
-        clock_in: Time.current,
-        notes: "Registro de entrada"
+        clock_in: Time.current
       )
       flash[:notice] = "Entrada registrada exitosamente"
     end
@@ -42,14 +41,20 @@ class HomeController < ApplicationController
     elsif record.clock_out.present?
       flash[:alert] = "Ya se ha registrado la salida para hoy"
     else
-      record.update!(
-        clock_out: Time.current,
-        notes: record.notes + " | Registro de salida"
-      )
+      record.update!(clock_out: Time.current)
       flash[:notice] = "Salida registrada exitosamente"
     end
 
     redirect_to root_path
+  end
+
+  def update_notes
+    @record = TimeRecord.find(params[:id])
+    if @record.update(notes: params[:notes])
+      render json: { status: 'success' }
+    else
+      render json: { status: 'error' }, status: :unprocessable_entity
+    end
   end
 
   def destroy
