@@ -330,14 +330,10 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
-  net-imap
-  net-pop
-  net-smtp
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.2.0)
   rubocop-rails-omakase
-  rubyzip (~> 2.3.0)
   selenium-webdriver
   sprockets-rails
   stimulus-rails

@@ -60,11 +60,3 @@ end
 
 gem 'caxlsx'
 gem 'caxlsx_rails'
-
-# Agregar estas gemas si no están ya en tu Gemfile
-gem 'net-smtp', require: false
-gem 'net-imap', require: false
-gem 'net-pop', require: false
-
-# Asegúrate de que rubyzip tenga una versión específica
-gem 'rubyzip', '~> 2.3.0'
