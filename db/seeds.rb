@@ -8,13 +8,28 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-# Nuevo usuario a crear
-new_user = 'Lynn Reyna'
+# Lista de usuarios a crear
+users = [
+  'Diego Mero',
+  'Joel Delgado',
+  'Luis Macías',
+  'Lynn Reina',
+  'Ruth Álcivar',
+  'Jean Carlos Crespo',
+  'Silvia Quiroz',
+  'Jennifer Moreira',
+  'Yulitza Loor',
+  'Sandra Castro'
+]
 
-# Solo crea el usuario si no existe
-unless User.exists?(name: new_user)
-  User.create!(name: new_user)
-  puts "Se creó el usuario: #{new_user}"
-else
-  puts "El usuario #{new_user} ya existe"
+# Crea cada usuario si no existe
+users.each do |name|
+  unless User.exists?(name: name)
+    User.create!(name: name)
+    puts "Se creó el usuario: #{name}"
+  else
+    puts "El usuario #{name} ya existe"
+  end
 end
+
+puts "Proceso de seed completado!"
