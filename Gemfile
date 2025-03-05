@@ -63,6 +63,6 @@ gem 'caxlsx_rails'
 
 # Especificar versiones exactas para evitar conflictos
 gem 'net-smtp', '0.5.1'
-gem 'net-imap', '0.5.5'
+gem 'net-imap', '0.5.6'
 gem 'net-pop', '0.1.2'
 gem 'rubyzip', '~> 2.3.0'
