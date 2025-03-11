@@ -9,27 +9,35 @@
 #   end
 
 # Lista de usuarios a crear
-users = [
-  'Diego Mero',
-  'Joel Delgado',
-  'Luis Macías',
-  'Lynn Reina',
-  'Ruth Álcivar',
-  'Jean Carlos Crespo',
-  'Silvia Quiroz',
-  'Jennifer Moreira',
-  'Yulitza Loor',
-  'Sandra Castro'
-]
+# users = [
+#   'Diego Mero',
+#   'Joel Delgado',
+#   'Luis Macías',
+#   'Lynn Reina',
+#   'Ruth Álcivar',
+#   'Jean Carlos Crespo',
+#   'Silvia Quiroz',
+#   'Jennifer Moreira',
+#   'Yulitza Loor',
+#   'Sandra Castro'
+# ]
 
-# Crea cada usuario si no existe
-users.each do |name|
-  unless User.exists?(name: name)
-    User.create!(name: name)
-    puts "Se creó el usuario: #{name}"
-  else
-    puts "El usuario #{name} ya existe"
-  end
-end
+# # Crea cada usuario si no existe
+# users.each do |name|
+#   unless User.exists?(name: name)
+#     User.create!(name: name)
+#     puts "Se creó el usuario: #{name}"
+#   else
+#     puts "El usuario #{name} ya existe"
+#   end
+# end
 
-puts "Proceso de seed completado!"
+# puts "Proceso de seed completado!"
+
+user = User.find_by(name: 'Yulitza Loor')
+if user
+  user.update!(name: 'Yulixa Loor')
+  puts "Successfully updated user's name to Yulixa Loor"
+else
+  puts "User 'Yulitza Loor' not found"
+end 
